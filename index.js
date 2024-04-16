@@ -20,21 +20,17 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 
-app.get('/', generalRoutes);
+app.use('/', generalRoutes);
 
 
-app.get('/account', userRoutes)
+app.use('/account', userRoutes)
 
 
-app.get('/admin', adminRoutes)
+app.use('/admin', adminRoutes)
 
 
-
-
-
-
-// app.get('*',(req,res)=>{
-//   res.send("Page bNot Found")
-// })
+app.get('*',(req,res)=>{
+  res.send("Page bNot Found")
+})
 
 app.listen(port, console.log("Server Started at port  " + port))
