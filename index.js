@@ -13,7 +13,12 @@ const userRoutes = require('./routes/userRoutes')
 
 const adminRoutes =  require('./routes/adminRoutes')
 
+//database connection 
+const connectSammy = require('./sammydbconnect/dbconnect')
+
 const app  = express();
+
+connectSammy();
 
 app.use(express.static('public'))
 
