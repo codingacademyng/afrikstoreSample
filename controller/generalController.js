@@ -47,6 +47,53 @@ const registerpage  = async (req,res)=>{
 }
 
 
+const displayallregistereduser =  async(req,res)=>{
+  
+    let data =  await UsersTable.find();
+
+    res.send(data)
+}
+
+const singleuser =  async(req,res)=>{
+
+    let id = req.params.id
+
+    //let email1 = req.params.email
+      
+    //finding by id 
+    let data =  await UsersTable.findById({_id:id});
+
+    //find by email
+    //let data2 =  await UsersTable.find({email:email1})
+
+    res.send(data)
+}
+
+
+const allusersintable = async (req,res)=>{
+
+
+    const handleTable = (contacts)=>{
+        return contacts.map((contact, index)=>(
+             `<tr><td>${index + 1}</td> <td>${contact.firstname}</td> <td>${contact.lastname}</td> <td>${contact.email}</td> <td>${contact.username}</td></tr>`
+         ))
+     }
+
+     let contacts =  await UsersTable.find();
+     
+     let pagelist = `<h2>All Contact List</h2><table border='1'>
+     <tr><th>S/N</th> <th>FIRSTNAME</th> <th>LASTNAME</th> <th>EMAIL</th> <th>USERNAME</th></tr>
+         ${handleTable(contacts)}
+ 
+     </table>`
+
+
+     res.send(pagelist);
+
+}
+
+
+
 
 
 
@@ -55,5 +102,8 @@ const registerpage  = async (req,res)=>{
 module.exports = {
     homepage,
     login,
-    registerpage
+    registerpage,
+    displayallregistereduser,
+    singleuser,
+    allusersintable
 }
