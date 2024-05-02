@@ -94,7 +94,15 @@ const allusersintable = async (req,res)=>{
 
 
 
+const favouremilokan = async (req,res)=>{
+    const samlarry = '66224a9c7a022f7a7439f4f7';
+    const email = 'samdenis@gmail.com';
+    //const favourrecord  = await  UsersTable.find();
 
+   // const favourrecord =  await  UsersTable.findById({_id:samlarry});
+    const favourrecord =      await UsersTable.findOne({email})
+    res.send(favourrecord)
+}
 
 
 
@@ -105,5 +113,6 @@ module.exports = {
     registerpage,
     displayallregistereduser,
     singleuser,
-    allusersintable
+    allusersintable,
+    favouremilokan
 }

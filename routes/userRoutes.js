@@ -19,6 +19,11 @@ router.get('/agentlist',(req,res)=>{
 })
 
 
+router.get('/yayabello', (req,res)=>{
+    res.send("Yaya Is a Effc Friends")
+})
+
+
 
 
 
